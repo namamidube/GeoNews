@@ -1,41 +1,81 @@
-# GeoNews
+# GeoNews: Location-Based News Aggregator
 
-## Table of Content
-* [Overview](#overview)
+GeoNews is a location-aware news platform that combines real-time news aggregation, NLP-based geographic tagging, and interactive map-based visualization to deliver a dynamic and contextually relevant news experience.
 
-* [Features](#features)
-
-* [Technologies Used](#technologies-used)
-
-* [Project Architecture](#project-architecture)
-
-* [Conclusion](#conclusion)
+---
 
 ## Overview
-The GeoNews project is a user-centric system designed to retrieve real-time news from various feeds and add geographic tags with precise latitude and longitude coordinates (Geo-Tags) through NLP and ML models. The application provides an interface for users to visualize news events on a geospatial map of India in real-time.
 
-Google Maps is integrated into the UI, displaying news updates from the past six to twelve hours on the map, allowing users to quickly identify significant events and trends across the country.
+In the digital era, accessing real-time and contextually relevant news remains a challenge due to the overwhelming volume of online information. Traditional news aggregators often lack geospatial intelligence, making it difficult to explore location-specific news dynamically.
 
+GeoNews bridges this gap by:
+- Aggregating real-time news via APIs like Newsdata.io
+- Extracting geographic entities using spaCy NLP (NER)
+- Mapping articles with OpenCage Geocoder
+- Visualizing news on a Flutter-based OpenStreetMap UI
+
+Users can:
+- View news by country and date
+- Interact with map markers for location-specific updates
+- Explore both tagged (with locations) and untagged (general) news
+
+---
 
 ## Features
-* Real-Time News Retrieval: Collects news from various sources in real-time.
-* Geographic Tagging: Utilizes NLP and ML models to add precise geographic tags (latitude and longitude coordinates) to news articles.
-* Interactive Map Display: Integrates Google Maps into the UI to visually display news events. Shows news updates from the past six to twelve hours on the map of India.
-* User Interface: Developed using Flutter to ensure smooth operation across multiple devices, providing a seamless and intuitive user experience.
-* User Benefits: Allows users to visualize real-time news events on a map and enables quick identification of significant events and trends across the country.
+
+- Real-time News Aggregation from multiple APIs
+- Named Entity Recognition (NER) to extract GPE/LOC from news
+- Location Geocoding using OpenCage API
+- Disambiguation for duplicate place names
+- Interactive Map (OpenStreetMap, Esri Imagery, TopoMap, Terrain)
+- Filter by Date and Country
+- View News Pop-Ups directly from the map
+- PostgreSQL backend for structured storage
+- Separate storage of untagged articles
+
+---
+
+## Data Flow Diagram
+
+The data flow diagram below illustrates the interaction between the key components of GeoNews:
+
+![Data Flow Diagram](assets/DataFlow.png)
+
+---
+
+## User Interface Visuals
+
+### Home Page 
+![Home Page](assets/Home.png)
+
+### Filter By Date 
+![Date Filter](assets/FilterByDate.gif)
+
+### View Detailed News Summary of Pointers
+![View News](assets/ViewNews.gif)
+
+### Filter By Country 
+![Date Filter](assets/FilterByCountry.gif)
+
+### General News 
+#### Any News for which we could not find a location, are stored under General News
+![Date Filter](assets/GeneralNews.png)
+
+### Map Styles
+![Date Filter](assets/MapStyles.gif)
+
+---
+
+## System Architecture
+
+### Technologies Used
+- Frontend: Flutter (Cross-platform)
+- Backend: PHP
+- Database: PostgreSQL
+- NLP: spaCy `en_core_web_lg`
+- Geocoding: OpenCage Geocoder API
+- News Sources: Newsdata.io API
+
+---
 
 
-## Technologies Used:
-* FrontEnd 
-    * Flutter, Google Maps
-* BackEnd Database and Query Engine (PhP)
-    * SpatiaLite (Light Weight Spatial Database)
-* Backend Processing
-    * Using Natural Language Toolkit (NLTK) and AI/ML for extracting City names for the News feeds
-
-
-## Project Architecture:
-![alt text](<Data Flow.png>)
-
-## Conclusion:
-GeoNews lets users track real-time news events from all over India on an interactive map, helping them stay informed and quickly understand where things are happening. By using advanced NLP and ML models, GeoNews accurately tags news with exact locations. The app's friendly interface, built with Flutter, works smoothly on different devices, and Google Maps integration makes it easy to see news updates on the map. This project not only helps users follow current events but also shows the geographic context clearly, making it a valuable tool for anyone who wants to stay updated on what's happening across India.
